@@ -63,6 +63,7 @@ DROP VIEW IF EXISTS personal_risk;
 DROP VIEW IF EXISTS goal_associations;
 DROP VIEW IF EXISTS riskModel_tagged;
 DROP VIEW IF EXISTS conceptMapModel_all;
+
 DROP TABLE IF EXISTS task_goal_contribution;
 DROP TABLE IF EXISTS trust_boundary_usecase;
 DROP TABLE IF EXISTS trust_boundary_asset;
@@ -86,6 +87,7 @@ DROP TABLE IF EXISTS asset_instance;
 DROP TABLE IF EXISTS location_link;
 DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS locations;
+
 DROP TABLE IF EXISTS usecase_step_synopsis;
 DROP TABLE IF EXISTS usecase_pc_contribution;
 DROP TABLE IF EXISTS usecase_tc_contribution;
@@ -115,6 +117,7 @@ DROP TABLE IF EXISTS obstacle_tag;
 DROP TABLE IF EXISTS domainproperty_tag;
 DROP TABLE IF EXISTS countermeasure_tag;
 DROP TABLE IF EXISTS response_tag;
+
 DROP TABLE IF EXISTS component_view_component;
 DROP TABLE IF EXISTS connector;
 DROP TABLE IF EXISTS component_view;
@@ -131,6 +134,7 @@ DROP TABLE IF EXISTS component_template_requirement;
 DROP TABLE IF EXISTS component_template_goal;
 DROP TABLE IF EXISTS component_vulnerability_target;
 DROP TABLE IF EXISTS component_threat_target;
+
 DROP TABLE IF EXISTS document_reference_vulnerability;
 DROP TABLE IF EXISTS document_reference_obstacle;
 DROP TABLE IF EXISTS ice_ic_contribution;
@@ -226,7 +230,6 @@ DROP TABLE IF EXISTS domainproperty_asset;
 DROP TABLE IF EXISTS environment_obstacle;
 DROP TABLE IF EXISTS obstacle_label;
 DROP TABLE IF EXISTS obstacle_definition;
-DROP TABLE IF EXISTS usecase_definition;
 DROP TABLE IF EXISTS obstacle_category;
 DROP TABLE IF EXISTS obstacle_concern;
 DROP TABLE IF EXISTS requirement_task;
@@ -1433,14 +1436,6 @@ CREATE TABLE obstacle_definition (
   rationale VARCHAR (4000) DEFAULT 'None',
   PRIMARY KEY(obstacle_id,environment_id),
   FOREIGN KEY(obstacle_id) REFERENCES obstacle(id),
-  FOREIGN KEY(environment_id) REFERENCES environment(id)
-) ENGINE=INNODB;
-CREATE TABLE usecase_definition (
-  usecase_id INT NOT NULL,
-  environment_id INT NOT NULL,
-  average FLOAT DEFAULT 0,
-  PRIMARY KEY(usecase_id,environment_id),
-  FOREIGN KEY(usecase_id) REFERENCES usecase(id),
   FOREIGN KEY(environment_id) REFERENCES environment(id)
 ) ENGINE=INNODB;
 CREATE TABLE obstacle_category (
